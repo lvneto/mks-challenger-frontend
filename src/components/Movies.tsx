@@ -119,7 +119,7 @@ const customStyles = {
       {isUpdate
     ? 
       <>         
-        <div className="flex py-2 justify-center hover:h-full bg-blue-700 dark:bg-blue-700">           
+        <div className="flex py-2 justify-center hover:h-full bg-blue-700">           
           <form onSubmit={handleWithUpdateMovie} className="bg-white shadow-md rounded px-8 pt-6 pb-8 mb-4">
             <div className="mb-4">
               <label className="block text-gray-700 text-sm font-bold mb-2" >
@@ -147,8 +147,8 @@ const customStyles = {
             </button>  
 
             <button onChange={event => setIsUpdate(false)} className="ml-2 px-2 py-2 bg-red-800 text-white text-sm
-              leading-tight uppercase rounded shadow-md hover:bg-blue-600 hover:shadow-lg focus:bg-blue-900 focus:shadow-lg
-              focus:outline-none focus:ring-0 active:bg-blue-900 active:shadow-lg transition duration-150 ease-in-out"             >
+              leading-tight uppercase rounded shadow-md hover:bg-red-600 hover:shadow-lg focus:bg-blue-900 focus:shadow-lg
+              focus:outline-none focus:ring-0 active:bg-blue-900 active:shadow-lg transition duration-150 ease-in-out">
                 Cancelar
             </button>             
           </form>             
@@ -156,10 +156,10 @@ const customStyles = {
       </> 
       : 
       <>
-        <div className="flex py-2 bg-blue-700 flex dark:bg-blue-700">        
-        <button className="px-2 m-2 bg-gray-700 text-white text-sm
-          leading-tight uppercase rounded shadow-md hover:bg-gray-600 hover:shadow-lg focus:bg-blue-900 focus:shadow-lg
-          focus:outline-none focus:ring-0 active:bg-blue-900 active:shadow-lg transition duration-150 ease-in-out py-2" 
+        <div className="flex py-2 bg-blue-900">        
+        <button className="px-2 m-2 bg-blue-600 text-white text-sm
+          leading-tight uppercase rounded shadow-md hover:bg-blue-400 hover:shadow-lg focus:bg-blue-600 focus:shadow-lg
+          focus:outline-none focus:ring-0 active:bg-blue-600 active:shadow-lg transition duration-150 ease-in-out py-2" 
           onClick={openModal}>Registrar Filme
         </button>
 
@@ -242,7 +242,7 @@ const customStyles = {
             {movies.map((movie: Movie) => (                   
           <tr className="text-white border-b bg-gray-800 border-gray-700 odd:bg-white even:bg-gray-50 odd:bg-gray-800
             even:bg-gray-700  md:transition-all ease-in-out delay-10 hover:bg-blue-500 duration-300" key={movie.id}>
-            <td className="px-6 py-4 border-slate-600 dark:border-slate-600"> 
+            <td className="px-6 py-4 border-slate-600"> 
 
               <button className="px-2 m-2 bg-blue-700 text-white text-sm
                 leading-tight uppercase rounded shadow-md hover:bg-gray-600 hover:shadow-lg focus:bg-blue-900 focus:shadow-lg
@@ -269,16 +269,16 @@ const customStyles = {
               </button>  
 
             </td>                         
-            <td className="px-6 py-4 border border-slate-600 dark:border-slate-600">
+            <td className="px-6 py-4 border border-slate-600">
               {movie.title}
             </td>        
-            <td className="px-6 py-4 border border-slate-600 dark:border-slate-600"> 
+            <td className="px-6 py-4 border border-slate-600"> 
               {movie.description}
             </td>       
-            <td className="px-6 py-4 border border-slate-600 dark:border-slate-600">
+            <td className="px-6 py-4 border border-slate-600">
               {movie.views}
             </td>               
-            <td className="px-6 py-4 border border-slate-600 dark:border-slate-600"> 
+            <td className="px-6 py-4 border border-slate-600"> 
               {new Intl.DateTimeFormat("pt-BR", {}).format(
               new Date(movie.published))}
             </td> 
