@@ -5,7 +5,7 @@ import { api } from '../lib/api';
 
 type Movie = {
   id: string;
-  name: string;
+  title: string;
   description: string;
   views: string;
   published: string ;
@@ -201,7 +201,7 @@ const customStyles = {
       <table className="w-full text-sm text-center">               
         <thead className="text-sm text-gray-100 uppercase bg-blue-500">
           <tr>                                
-            <th className="text-md">Nome</th>
+            <th className="text-md">Título</th>
             <th className="text-md">Descrição</th>
             <th className="text-md">Observação</th>
             <th className="text-md">Data de Envio</th>   
@@ -213,7 +213,7 @@ const customStyles = {
         <tr className="text-white border-b bg-gray-800 border-gray-700 odd:bg-white even:bg-gray-50 odd:bg-gray-800
           even:bg-gray-700  md:transition-all ease-in-out delay-10 hover:-translate-y-1 hover:scale-109 hover:bg-blue-500 duration-300" key={movie.id}>                         
           <td className="px-6 py-4 border border-slate-600 dark:border-slate-600">
-            {movie.name}
+            {movie.title}
           </td>        
           <td className="px-6 py-4 border border-slate-600 dark:border-slate-600"> 
             {movie.description}
