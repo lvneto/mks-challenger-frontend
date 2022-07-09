@@ -196,7 +196,7 @@ const customStyles = {
           <tr>                                
             <th className="text-md">Título</th>
             <th className="text-md">Descrição</th>
-            <th className="text-md">Observação</th>
+            <th className="text-md">Visualizações</th>
             <th className="text-md">Data de Envio</th>   
             <th className="text-md">Ações</th>           
           </tr>
