@@ -11,8 +11,6 @@ type Movie = {
   published: string ;
 }
 
-Modal.setAppElement('#yourAppElement');
-
 export function Movies () {
   const [movies, setMovies] = useState([]);
   const [take , setTake] = useState(10) as any ; 
