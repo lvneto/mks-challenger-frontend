@@ -81,8 +81,7 @@ export function Movies () {
   await api.post('/movies', {
     name,
     description,
-    views,
-    published
+    views
   });
 
   closeModal();
@@ -137,13 +136,7 @@ const customStyles = {
                       Visualizações
                     </label>
                     <input onChange={event => setViews(event.target.value)} className="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline" type="text" placeholder="Visualizações" />
-                  </div> 
-                  <div className="mb-4">
-                    <label className="block text-gray-700 text-sm font-bold mb-2" >
-                      Publicado
-                    </label>
-                    <input onChange={event => setPublished(event.target.value)} className="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline" type="text" placeholder="Publicado" />
-                  </div> 
+                  </div>                   
                   <button className="px-2 py-2 bg-blue-800 text-white text-sm
                     leading-tight uppercase rounded shadow-md hover:bg-blue-600 hover:shadow-lg focus:bg-blue-900 focus:shadow-lg
                     focus:outline-none focus:ring-0 active:bg-blue-900 active:shadow-lg transition duration-150 ease-in-out" 
