@@ -1,5 +1,6 @@
-import { useEffect, useState } from 'react'
+import { FormEvent, useEffect, useState } from 'react'
 import { ChevronLeftIcon, ChevronRightIcon, TrashIcon } from '@heroicons/react/solid';
+import Modal from 'react-modal';
 import { api } from '../lib/api'
 
 type Movie = {
@@ -11,13 +12,27 @@ type Movie = {
 }
 
 export function Movies () {
-  const [movies, setMovies] = useState([]) 
-  const [take , setTake] = useState(10) as any  
-  const [skip , setSkip] = useState(0)
+  const [movies, setMovies] = useState([]);
+  const [take , setTake] = useState(10) as any ; 
+  const [skip , setSkip] = useState(0);
   const [currentPage, setCurrentPage] = useState(0);
   const [previousButton, setPreviousButton] = useState(false);
   const [nextButton, setNextButton] = useState(false); 
   const [refreshKey, setRefreshKey] = useState(0);
+  const [name, setName] = useState('');
+  const [description, setDescription] = useState('');
+  const [views, setViews] = useState('');
+  const [isPublished, setIsPublished] = useState('');
+  const [modalIsOpen, setIsOpen] = useState(false);
+
+  const openModal = () => {
+    setIsOpen(true);
+  }
+
+  const closeModal = () => {
+    setIsOpen(false);
+  }
+
 
   useEffect(() => {        
     async function fetchData(){
@@ -58,13 +73,87 @@ export function Movies () {
   const handleWithDelete = async (id: string) => {
     await api.delete(`/movies/${id}`)    
     return setRefreshKey(oldKey => oldKey +1)
-  }   
+  }  
+
+  const handleSubmitMovie = async (event: FormEvent) => {
+  event.preventDefault();
+
+  await api.post('/movies', {
+    name,
+    description,
+    views,
+    isPublished
+  });
+
+  closeModal();
+
+  return setRefreshKey(oldKey => oldKey +1)
+} 
+
+const customStyles = {
+  content: {
+    top: '50%',
+    left: '50%',
+    right: 'auto',
+    bottom: 'auto',
+    marginRight: '-50%',
+    transform: 'translate(-50%, -50%)',
+  },
+};
 
   return (
     <>  
       <div className="py-2 bg-blue-700 flex items-center sm:px-6 dark:bg-blue-700">        
         <div className="hidden sm:flex-1 sm:flex justify-center">       
-          <div>
+          <div>     
+            <button className="px-2 ml-2 mr-2 py-2 bg-blue-800 text-white text-sm
+                leading-tight uppercase rounded shadow-md hover:bg-blue-600 hover:shadow-lg focus:bg-blue-900 focus:shadow-lg
+                focus:outline-none focus:ring-0 active:bg-blue-900 active:shadow-lg transition duration-150 ease-in-out" 
+                onClick={openModal}>Registrar Filme
+            </button>
+            <Modal
+              style={customStyles}
+              isOpen={modalIsOpen}          
+              onRequestClose={closeModal}       
+              contentLabel="Registrar novo filme"
+            >            
+              <button onClick={closeModal}><svg className="w-6 h-6" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg"><path fillRule="evenodd" d="M4.293 4.293a1 1 0 011.414 0L10 8.586l4.293-4.293a1 1 0 111.414 1.414L11.414 10l4.293 4.293a1 1 0 01-1.414 1.414L10 11.414l-4.293 4.293a1 1 0 01-1.414-1.414L8.586 10 4.293 5.707a1 1 0 010-1.414z" clipRule="evenodd" /></svg></button>
+              <div className="w-full max-w-xs">
+                <form onSubmit={handleSubmitMovie} className="bg-white shadow-md rounded px-8 pt-6 pb-8 mb-4">
+                  <div className="mb-4">
+                    <label className="block text-gray-700 text-sm font-bold mb-2" >
+                      Nome
+                    </label>
+                    <input onChange={event => setName(event.target.value)} className="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline" type="text" placeholder="Nome" required/>
+                  </div>  
+                  <div className="mb-4">
+                    <label className="block text-gray-700 text-sm font-bold mb-2" >
+                      Descrição
+                    </label>
+                    <input onChange={event => setDescription(event.target.value)} className="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline" type="text" placeholder="Descrição" required/>
+                  </div> 
+                  <div className="mb-4">
+                    <label className="block text-gray-700 text-sm font-bold mb-2" >
+                      Visualizações
+                    </label>
+                    <input onChange={event => setViews(event.target.value)} className="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline" type="text" placeholder="Visualizações" />
+                  </div> 
+                  <div className="mb-4">
+                    <label className="block text-gray-700 text-sm font-bold mb-2" >
+                      Publicado
+                    </label>
+                    <input onChange={event => setIsPublished(event.target.value)} className="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline" type="text" placeholder="Publicado" />
+                  </div> 
+                  <button className="px-2 py-2 bg-blue-800 text-white text-sm
+                    leading-tight uppercase rounded shadow-md hover:bg-blue-600 hover:shadow-lg focus:bg-blue-900 focus:shadow-lg
+                    focus:outline-none focus:ring-0 active:bg-blue-900 active:shadow-lg transition duration-150 ease-in-out" 
+                    type="submit"
+                      >Registrar Filme
+                  </button>              
+                </form>               
+              </div>
+            </Modal>
+
             <span className="mr-2 bg-gray-700 border border-gray-600 text-gray-100 px-2 py-0.5 
               rounded text-center">           
               Exibir                  
