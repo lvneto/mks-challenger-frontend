@@ -200,11 +200,11 @@ const customStyles = {
 
       <table className="w-full text-sm text-center">               
         <thead className="text-sm text-gray-100 uppercase bg-blue-500">
-          <tr>
-            <th className="text-md">Data de Envio</th>                     
+          <tr>                                
             <th className="text-md">Nome</th>
             <th className="text-md">Descrição</th>
-            <th className="text-md">Observação</th>  
+            <th className="text-md">Observação</th>
+            <th className="text-md">Data de Envio</th>   
             <th className="text-md">Ações</th>           
           </tr>
         </thead>
@@ -222,7 +222,8 @@ const customStyles = {
             {movie.views}
           </td>               
           <td className="px-6 py-4 border border-slate-600 dark:border-slate-600"> 
-            {movie.published}
+            {new Intl.DateTimeFormat("pt-BR", {}).format(
+            new Date(movie.published))}
           </td>  
           <td className="px-6 py-4 border border-slate-600 dark:border-slate-600"> 
             <button                          
