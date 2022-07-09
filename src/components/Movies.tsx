@@ -105,8 +105,8 @@ const customStyles = {
       <div className="py-2 bg-blue-700 flex items-center sm:px-6 dark:bg-blue-700">        
         <div className="hidden sm:flex-1 sm:flex justify-center">       
           <div>     
-            <button className="px-2 ml-2 mr-2 py-2 bg-blue-800 text-white text-sm
-                leading-tight uppercase rounded shadow-md hover:bg-blue-600 hover:shadow-lg focus:bg-blue-900 focus:shadow-lg
+            <button className="px-2 ml-2 mr-2 py-2 bg-gray-700 text-white text-sm
+                leading-tight uppercase rounded shadow-md hover:bg-gray-600 hover:shadow-lg focus:bg-blue-900 focus:shadow-lg
                 focus:outline-none focus:ring-0 active:bg-blue-900 active:shadow-lg transition duration-150 ease-in-out" 
                 onClick={openModal}>Registrar Filme
             </button>
@@ -121,7 +121,7 @@ const customStyles = {
                 <form onSubmit={handleSubmitMovie} className="bg-white shadow-md rounded px-8 pt-6 pb-8 mb-4">
                   <div className="mb-4">
                     <label className="block text-gray-700 text-sm font-bold mb-2" >
-                      Nome
+                      Título
                     </label>
                     <input onChange={event => setTitle(event.target.value)} className="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline" type="text" placeholder="Título" required/>
                   </div>  
