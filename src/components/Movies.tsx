@@ -125,19 +125,19 @@ const customStyles = {
               <label className="block text-gray-700 text-sm font-bold mb-2" >
                 Título
               </label>
-              <input onChange={event => setTitle(event.target.value)} className="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline" type="text" placeholder={title} />
+              <input value={title} onChange={event => setTitle(event.target.value)} className="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline" type="text" placeholder={title} />
             </div>  
             <div className="mb-4">
               <label className="block text-gray-700 text-sm font-bold mb-2" >
                 Descrição
               </label>
-              <input onChange={event => setDescription(event.target.value)} className="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline" type="text" placeholder={description} />
+              <input value={description} onChange={event => setDescription(event.target.value)} className="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline" type="text" placeholder={description} />
             </div> 
             <div className="mb-4">
               <label className="block text-gray-700 text-sm font-bold mb-2" >
                 Visualizações
               </label>
-              <input onChange={event => setViews(event.target.value)} className="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline" type="text" placeholder={views} />
+              <input value={views} onChange={event => setViews(event.target.value)} className="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline" type="text" placeholder={views} />
             </div>                   
             <button className="px-2 py-2 bg-blue-800 text-white text-sm
               leading-tight uppercase rounded shadow-md hover:bg-blue-600 hover:shadow-lg focus:bg-blue-900 focus:shadow-lg
