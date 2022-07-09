@@ -155,9 +155,10 @@ const customStyles = {
                 })} className="inline-block px-2 ml-2 uppercase
                 bg-gray-800 border border-gray-600 text-gray-100 bg-clip-padding bg-no-repeat border border-gray-300 
                 rounded transition 
-                focus:text-gray-100 focus:outline-none text-center">                           
-                  <option className="text-gray-100 text-center" value={'15'}>15</option> 
-                  <option className="text-gray-100 text-center" value={'45'}>30</option>                                
+                focus:text-gray-100 focus:outline-none text-center">                   
+                <option className="text-gray-100 text-center" value={'10'}>10</option>        
+                  <option className="text-gray-100 text-center" value={'20'}>20</option> 
+                  <option className="text-gray-100 text-center" value={'25'}>30</option>                                
                 </select>                
             </span>            
             <nav className="relative z-0 inline-flex rounded-md shadow-sm flex space-x-2" aria-label="Pagination">
@@ -204,7 +205,7 @@ const customStyles = {
         <tbody>
           {movies.map((movie: Movie) => (                   
         <tr className="text-white border-b bg-gray-800 border-gray-700 odd:bg-white even:bg-gray-50 odd:bg-gray-800
-          even:bg-gray-700  md:transition-all ease-in-out delay-10 hover:-translate-y-1 hover:scale-109 hover:bg-blue-500 duration-300" key={movie.id}>                         
+          even:bg-gray-700  md:transition-all ease-in-out delay-10 hover:bg-blue-500 duration-300" key={movie.id}>                         
           <td className="px-6 py-4 border border-slate-600 dark:border-slate-600">
             {movie.title}
           </td>        
@@ -218,10 +219,10 @@ const customStyles = {
             {new Intl.DateTimeFormat("pt-BR", {}).format(
             new Date(movie.published))}
           </td>  
-          <td className="px-6 py-4 border border-slate-600 dark:border-slate-600"> 
+          <td className="px-6 py-4 border-slate-600 dark:border-slate-600"> 
             <button                          
               onClick={() => handleWithDelete(movie.id)}
-              className="relative inline-flex items-center px-2 py-2 rounded-l-md border bg-white  
+              className="relative inline-flex items-center px-2 py-2 rounded-l-md border bg-gray-300 hover:bg-gray-700  
               text-gray-500 hover:bg-blue-200"
               >             
               <TrashIcon className="h-5 w-5" aria-hidden="true" />
