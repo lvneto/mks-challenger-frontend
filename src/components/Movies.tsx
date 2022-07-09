@@ -13,7 +13,7 @@ type Movie = {
 
 export function Movies () {
   const [movies, setMovies] = useState([]);
-  const [take , setTake] = useState(10) as any ; 
+  const take = 13;
   const [skip , setSkip] = useState(0);
   const [currentPage, setCurrentPage] = useState(0);
   const [previousButton, setPreviousButton] = useState(false);
@@ -103,11 +103,11 @@ const customStyles = {
   return (
     <>  
       <div className="py-2 bg-blue-700 flex items-center sm:px-6 dark:bg-blue-700">        
-        <div className="hidden sm:flex-1 sm:flex justify-center">       
+        <div className="sm:flex-1 sm:flex justify-center">       
           <div>     
-            <button className="px-2 ml-2 mr-2 py-2 bg-gray-700 text-white text-sm
+            <button className="px-2 mr-2 bg-gray-700 text-white text-sm
                 leading-tight uppercase rounded shadow-md hover:bg-gray-600 hover:shadow-lg focus:bg-blue-900 focus:shadow-lg
-                focus:outline-none focus:ring-0 active:bg-blue-900 active:shadow-lg transition duration-150 ease-in-out" 
+                focus:outline-none focus:ring-0 active:bg-blue-900 active:shadow-lg transition duration-150 ease-in-out py-2" 
                 onClick={openModal}>Registrar Filme
             </button>
             <Modal
@@ -146,21 +146,7 @@ const customStyles = {
                 </form>               
               </div>
             </Modal>
-
-            <span className="mr-2 bg-gray-700 border border-gray-600 text-gray-100 px-2 py-0.5 
-              rounded text-center">           
-              Exibir                  
-              <select onChange={(event => {
-                  setTake(event.target.value)
-                })} className="inline-block px-2 ml-2 uppercase
-                bg-gray-800 border border-gray-600 text-gray-100 bg-clip-padding bg-no-repeat border border-gray-300 
-                rounded transition 
-                focus:text-gray-100 focus:outline-none text-center">                   
-                <option className="text-gray-100 text-center" value={'10'}>10</option>        
-                  <option className="text-gray-100 text-center" value={'20'}>20</option> 
-                  <option className="text-gray-100 text-center" value={'25'}>30</option>                                
-                </select>                
-            </span>            
+                               
             <nav className="relative z-0 inline-flex rounded-md shadow-sm flex space-x-2" aria-label="Pagination">
               <button 
                 disabled={previousButton}              
