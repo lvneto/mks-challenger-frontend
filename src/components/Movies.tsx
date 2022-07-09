@@ -11,6 +11,8 @@ type Movie = {
   published: string ;
 }
 
+Modal.setAppElement('#yourAppElement');
+
 export function Movies () {
   const [movies, setMovies] = useState([]);
   const [take , setTake] = useState(10) as any ; 
@@ -19,10 +21,9 @@ export function Movies () {
   const [previousButton, setPreviousButton] = useState(false);
   const [nextButton, setNextButton] = useState(false); 
   const [refreshKey, setRefreshKey] = useState(0);
-  const [name, setName] = useState('');
+  const [title, setTitle] = useState('');
   const [description, setDescription] = useState('');
   const [views, setViews] = useState('');
-  const [published, setPublished] = useState('');
   const [modalIsOpen, setIsOpen] = useState(false);
 
   const openModal = () => {
@@ -75,18 +76,19 @@ export function Movies () {
     return setRefreshKey(oldKey => oldKey +1)
   }  
 
-  const handleSubmitMovie = async (event: FormEvent) => {
+  const handleSubmitMovie = (event: FormEvent) => {
   event.preventDefault();
 
-  await api.post('/movies', {
-    name,
+  api.post('/movies', {
+    title,
     description,
     views
-  });
-
-  closeModal();
+  }).then(() => {
+    
+   closeModal();
 
   return setRefreshKey(oldKey => oldKey +1)
+  })
 } 
 
 const customStyles = {
@@ -123,7 +125,7 @@ const customStyles = {
                     <label className="block text-gray-700 text-sm font-bold mb-2" >
                       Nome
                     </label>
-                    <input onChange={event => setName(event.target.value)} className="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline" type="text" placeholder="Nome" required/>
+                    <input onChange={event => setTitle(event.target.value)} className="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline" type="text" placeholder="Título" required/>
                   </div>  
                   <div className="mb-4">
                     <label className="block text-gray-700 text-sm font-bold mb-2" >
