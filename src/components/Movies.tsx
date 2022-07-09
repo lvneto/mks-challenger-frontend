@@ -144,7 +144,13 @@ const customStyles = {
               focus:outline-none focus:ring-0 active:bg-blue-900 active:shadow-lg transition duration-150 ease-in-out" 
               type="submit">
                 Enviar
-            </button>              
+            </button>  
+
+            <button onChange={event => setIsUpdate(false)} className="ml-2 px-2 py-2 bg-red-800 text-white text-sm
+              leading-tight uppercase rounded shadow-md hover:bg-blue-600 hover:shadow-lg focus:bg-blue-900 focus:shadow-lg
+              focus:outline-none focus:ring-0 active:bg-blue-900 active:shadow-lg transition duration-150 ease-in-out"             >
+                Cancelar
+            </button>             
           </form>             
         </div>     
       </> 
