@@ -1,14 +1,14 @@
 import { FormEvent, useEffect, useState } from 'react'
 import { ChevronLeftIcon, ChevronRightIcon, TrashIcon } from '@heroicons/react/solid';
 import Modal from 'react-modal';
-import { api } from '../lib/api'
+import { api } from '../lib/api';
 
 type Movie = {
-  id: string
-  name: string
-  description: string
-  views: string
-  isPublished: boolean 
+  id: string;
+  name: string;
+  description: string;
+  views: string;
+  published: string ;
 }
 
 export function Movies () {
@@ -22,7 +22,7 @@ export function Movies () {
   const [name, setName] = useState('');
   const [description, setDescription] = useState('');
   const [views, setViews] = useState('');
-  const [isPublished, setIsPublished] = useState('');
+  const [published, setPublished] = useState('');
   const [modalIsOpen, setIsOpen] = useState(false);
 
   const openModal = () => {
@@ -82,7 +82,7 @@ export function Movies () {
     name,
     description,
     views,
-    isPublished
+    published
   });
 
   closeModal();
@@ -142,7 +142,7 @@ const customStyles = {
                     <label className="block text-gray-700 text-sm font-bold mb-2" >
                       Publicado
                     </label>
-                    <input onChange={event => setIsPublished(event.target.value)} className="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline" type="text" placeholder="Publicado" />
+                    <input onChange={event => setPublished(event.target.value)} className="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline" type="text" placeholder="Publicado" />
                   </div> 
                   <button className="px-2 py-2 bg-blue-800 text-white text-sm
                     leading-tight uppercase rounded shadow-md hover:bg-blue-600 hover:shadow-lg focus:bg-blue-900 focus:shadow-lg
@@ -222,7 +222,7 @@ const customStyles = {
             {movie.views}
           </td>               
           <td className="px-6 py-4 border border-slate-600 dark:border-slate-600"> 
-            {movie.isPublished ? 'Sim' : 'Não'}
+            {movie.published}
           </td>  
           <td className="px-6 py-4 border border-slate-600 dark:border-slate-600"> 
             <button                          
